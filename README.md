@@ -1,5 +1,9 @@
 # FirstReact
 
+## Purpose/Scope
+
+A React / Redux solution to display PluralSight course content. An introductory project to learn the basics of React.js.
+
 ## Installation
 
 https://create-react-app.dev/docs/getting-started/
