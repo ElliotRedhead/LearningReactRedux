@@ -35,4 +35,5 @@ Components are injected into the DOM by use of Javascript, exemplary files withi
 - index.js  
 - App.js  
 - PageNotFound.js  
+
 Studying the import/export logic between these files exhibits the core mechanism of React modularity.
