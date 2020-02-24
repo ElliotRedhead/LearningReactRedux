@@ -12,3 +12,12 @@ npx create-react-app my-app
 cd my-app
 yarn start
 ```
+
+## Syntax
+
+There are four common ways of creating React components:
+1. createClass
+2. ES classs
+3. Function  - Preferred
+4. Arrow function  - Preferred
+
