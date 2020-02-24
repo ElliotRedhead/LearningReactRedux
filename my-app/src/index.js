@@ -6,7 +6,7 @@ import App from "./components/App";
 import "./index.css"
 
 render(<Router>
-    <Hi />
+    <App />
 </Router>,
 document.getElementById("app")
 );
