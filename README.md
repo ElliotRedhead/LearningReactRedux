@@ -6,7 +6,9 @@ A React / Redux solution to display PluralSight course content. An introductory 
 
 ## Installation
 
-https://create-react-app.dev/docs/getting-started/
+### Getting Started  
+
+[Setup Instructions](https://create-react-app.dev/docs/getting-started/)
 
 ```console
 npx create-react-app my-app
@@ -16,6 +18,10 @@ npx create-react-app my-app
 cd my-app
 yarn start
 ```
+
+### Github Pages Deployment  
+
+[Github Pages Setup](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
 
 ## Syntax
 
