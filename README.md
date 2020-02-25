@@ -43,3 +43,16 @@ Components are injected into the DOM by use of Javascript, exemplary files withi
 - PageNotFound.js  
 
 Studying the import/export logic between these files exhibits the core mechanism of React modularity.
+
+## Redux
+
+## Purpose  
+
+Redux is helpful for handling complex data flows, providing inter-component communication and handling of non-hierarchical data.  
+The most obvious use-case for Redux is when using the same data in many places, Redux enables centralised storage.  
+
+### General Development  
+
+1. Start with state in single component.  
+2. Lift state as needed.  
+3. Utilise content or Redux if lifting state scaleability becomes a hindrance.
