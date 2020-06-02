@@ -1,5 +1,5 @@
 {
-  "homepage":"http://elliotredhead.github.io/FirstReact",
+  "homepage": "http://elliotredhead.github.io/FirstReact",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -11,8 +11,7 @@
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -38,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "react-scripts": "^3.4.0"
   }
 }
