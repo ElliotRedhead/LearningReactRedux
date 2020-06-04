@@ -31,7 +31,7 @@ class CoursesPage extends React.Component {
    */
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.dispatch(courseActions.createCourse(this.state.course));
+    this.props.createCourse(this.state.course);
   };
 
   render() {
@@ -54,8 +54,8 @@ class CoursesPage extends React.Component {
 }
 
 CoursesPage.propTypes = {
-  courses: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  course: PropTypes.array.isRequired,
+  createCourse: PropTypes.func.isRequired,
 };
 
 /**
@@ -70,4 +70,15 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CoursesPage);
+/**
+ * Determines what actions are available to the component.
+ * @param {function} dispatch A function of the Redux store, called to dispatch an action and trigger a state change.
+ * @returns {function} Dispatches an action.
+ */
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: course => dispatch(courseActions.createCourse(course))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
