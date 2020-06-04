@@ -1,3 +1,4 @@
+import * as types from "../actions/actiontypes";
 /**
  * Updates the redux store by adding the new action passed in action.course to store.
  * Whatever is returned from the reducer becomes the new state for that reducer.
@@ -8,7 +9,7 @@
  */
 export default function courseReducer(state = [], action) {
   switch (action.type) {
-  case "CREATE_COURSE":
+  case types.CREATE_COURSE:
     return [...state, { ...action.course }];
   default:
     return state;
