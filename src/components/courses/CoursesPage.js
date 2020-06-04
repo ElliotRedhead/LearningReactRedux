@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 // Only using a class here for stateful implementation and to learn both syntaces.
 
@@ -42,4 +43,16 @@ class CoursesPage extends React.Component {
   }
 }
 
-export default CoursesPage;
+/**
+ * Determines what part of the state we expose to the component.
+ * Requests only the data that the component needs.
+ * @param {*} state
+ * @param {*} ownProps
+ */
+function mapStateToProps(state) {
+  return {
+    courses: state.courses,
+  };
+}
+
+export default connect(mapStateToProps)(CoursesPage);
