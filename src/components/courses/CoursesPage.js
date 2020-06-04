@@ -16,13 +16,13 @@ class CoursesPage extends React.Component {
    * Copy current course from state, set new title passed from event target value.
    * Sets state to pass.
    *
+   * A class field is used to bind 'this' to instance rather than change handler.
    * New object is created with object spread (values on right overwrite values on left).
-   * @param {*} event
    */
-  handleChange(event) {
+  handleChange = (event) => {
     const course = { ...this.state.course, title: event.target.value };
     this.setState({ course });
-  }
+  };
 
   render() {
     return (
