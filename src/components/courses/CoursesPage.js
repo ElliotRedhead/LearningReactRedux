@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as courseActions from "../../redux/actions/courseactions";
 
 // Only using a class here for stateful implementation and to learn both syntaces.
 
@@ -24,7 +25,7 @@ class CoursesPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert(this.state.course.title);
+    this.props.dispatch(courseActions.createCourse(this.state.course));
   };
 
   render() {
