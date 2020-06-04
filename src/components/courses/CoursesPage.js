@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as courseActions from "../../redux/actions/courseactions";
+import PropTypes from "prop-types";
 
 // Only using a class here for stateful implementation and to learn both syntaces.
 
@@ -23,6 +24,9 @@ class CoursesPage extends React.Component {
     this.setState({ course });
   };
 
+  /**
+   * Dispatches an action on Submit event.
+   */
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch(courseActions.createCourse(this.state.course));
@@ -43,6 +47,10 @@ class CoursesPage extends React.Component {
     );
   }
 }
+
+CoursesPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 /**
  * Determines what part of the state we expose to the component.
