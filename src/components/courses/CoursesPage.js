@@ -3,14 +3,11 @@ import React from "react";
 // Only using a class here for stateful implementation and to learn both syntaces.
 
 class CoursesPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      course: {
-        title: "",
-      },
-    };
-  }
+  state = {
+    course: {
+      title: "",
+    },
+  };
 
   /**
    * Copy current course from state, set new title passed from event target value.
