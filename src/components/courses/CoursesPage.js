@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as courseActions from "../../redux/actions/courseactions";
 import PropTypes from "prop-types";
+import {bindActionCreators} from "redux";
 
 // Only using a class here for stateful implementation and to learn both syntaces.
 
@@ -31,7 +32,7 @@ class CoursesPage extends React.Component {
    */
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.createCourse(this.state.course);
+    this.props.actions.createCourse(this.state.course);
   };
 
   render() {
@@ -55,7 +56,7 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   course: PropTypes.array.isRequired,
-  createCourse: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 /**
@@ -72,12 +73,13 @@ function mapStateToProps(state) {
 
 /**
  * Determines what actions are available to the component.
+ * bindActionCreators converts an object with action creators as values into an on object with each action creator wrapped into a dispatch call.
  * @param {function} dispatch A function of the Redux store, called to dispatch an action and trigger a state change.
  * @returns {function} Dispatches an action.
  */
 function mapDispatchToProps(dispatch) {
   return {
-    createCourse: course => dispatch(courseActions.createCourse(course))
+    actions: bindActionCreators(courseActions, dispatch)
   };
 }
 
