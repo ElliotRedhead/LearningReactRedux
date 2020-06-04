@@ -18,6 +18,7 @@ class CoursesPage extends React.Component {
    *
    * A class field is used to bind 'this' to instance rather than change handler.
    * New object is created with object spread (values on right overwrite values on left).
+   * @param {object} event The user's input.
    */
   handleChange = (event) => {
     const course = { ...this.state.course, title: event.target.value };
@@ -26,10 +27,10 @@ class CoursesPage extends React.Component {
 
   /**
    * Dispatches an action on Submit event.
+   * @param {object} event The user's input.
    */
   handleSubmit = (event) => {
     event.preventDefault();
-    debugger;
     this.props.dispatch(courseActions.createCourse(this.state.course));
   };
 
@@ -60,11 +61,10 @@ CoursesPage.propTypes = {
 /**
  * Determines what part of the state we expose to the component.
  * Requests only the data that the component needs.
- * @param {*} state
- * @param {*} ownProps
+ * @param {object} state The property of the component.
+ * @returns {object} The courses props.
  */
 function mapStateToProps(state) {
-  debugger;
   return {
     courses: state.courses,
   };

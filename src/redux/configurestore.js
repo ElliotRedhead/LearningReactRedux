@@ -5,8 +5,8 @@ import reduxImmutatableStateInvariant from "redux-immutable-state-invariant";
 /**
  * Configures the redux store.
  * Adds support for Redux dev tools, allowing interaction with Redux store in the browser.
- * @param {*} initialState The initial state of the Redux store.
- * @returns The updated store state.
+ * @param {object} initialState The initial state of the Redux store.
+ * @returns {object} The updated store state.
  */
 export default function configureStore(initialState) {
   const composeEnhancers =
