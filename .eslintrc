@@ -1,8 +1,5 @@
 {
   "extends": ["react-app"],
-  "rules": {
-    "additional-rule": "warn"
-  },
   "overrides": [
     {
       "files": ["**/*.ts?(x)"],
