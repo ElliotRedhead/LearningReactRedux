@@ -4,5 +4,6 @@
  * @param {string} course
  */
 export function createCourse(course) {
+  debugger;
   return { type: "CREATE_COURSE", course };
 }
