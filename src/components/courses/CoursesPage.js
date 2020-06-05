@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as courseActions from "../../redux/actions/courseactions";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-
+import CourseList from "./CourseList";
 // Only using a class here for stateful implementation and to learn both syntaces.
 
 class CoursesPage extends React.Component {
@@ -16,13 +16,12 @@ class CoursesPage extends React.Component {
     return (
       <>
         <h2>Courses</h2>
-        {this.props.courses.map((course) => (
-          <div key={course.title}>{course.title}</div>
-        ))}
+        <CourseList courses={this.props.courses} />
       </>
     );
   }
 }
+  
 
 CoursesPage.propTypes = {
   course: PropTypes.array.isRequired,
