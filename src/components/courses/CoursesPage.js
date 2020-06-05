@@ -7,6 +7,11 @@ import {bindActionCreators} from "redux";
 // Only using a class here for stateful implementation and to learn both syntaces.
 
 class CoursesPage extends React.Component {
+  componentDidMount(){
+    this.props.actions.loadCourses().catch(error => {
+      alert("Loading courses failed" + error);
+    });
+  }
   render() {
     return (
       <>
