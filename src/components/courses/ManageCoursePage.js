@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as courseActions from "../../redux/actions/courseactions";
-import * as authorActions from "../../redux/actions/authoractions";
+import { loadCourses } from "../../redux/actions/courseactions";
+import { loadAuthors } from "../../redux/actions/authoractions";
 import PropTypes from "prop-types";
 
 /**
@@ -56,10 +56,10 @@ function mapStateToProps(state) {
  * Determines what actions are available to the component.
  * New actions can be passed to allow component to make new requests.
  * bindActionCreators converts an object with action creators as values into an on object with each action creator wrapped into a dispatch call.
+ * Function scope of included variables takes precendence over module scope of identically named variables.
  */
 const mapDispatchToProps = {
-  loadCourses: courseActions.loadCourses,
-  loadAuthors: authorActions.loadAuthors
+  loadCourses,
+  loadAuthors
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
