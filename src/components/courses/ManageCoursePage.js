@@ -20,7 +20,7 @@ function ManageCoursePage(courses, authors, loadAuthors, loadCourses) {
         alert("Loading authors failed" + error);
       });
     }
-  });
+  }, [authors.length, courses.length, loadAuthors, loadCourses]);
   return (
     <>
       <h2>Manage Course</h2>
