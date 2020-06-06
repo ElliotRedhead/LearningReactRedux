@@ -7,10 +7,16 @@ import {bindActionCreators} from "redux";
 import CourseList from "./CourseList";;
 // Only using a class here for stateful implementation and to learn both syntaces.
 
+/**
+ * Creates course page component, utilising courses and authors properties.
+ */
 class CoursesPage extends React.Component {
   componentDidMount(){
     this.props.actions.loadCourses().catch(error => {
       alert("Loading courses failed" + error);
+    });
+    this.props.actions.loadAuthors().catch(error => {
+      alert("Loading authors failed" + error);
     });
   }
   render() {
