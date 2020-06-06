@@ -38,14 +38,21 @@ CoursesPage.propTypes = {
 /**
  * Determines what part of the state we expose to the component.
  * Requests only the data that the component needs.
+ * For each course, return existing course, adding author name property to object.
  * @param {object} state The property of the component.
  * @returns {object} The courses props.
  */
 function mapStateToProps(state) {
   return {
-    courses: state.courses,
+    courses: state.courses.map(course => {
+      return {
+        ...course,
+        authorName: state.authors.find(a=> a.id === course.authorId).name
+      };
+    }),
+    authors:state.authors
   };
-}
+};
 
 /**
  * Determines what actions are available to the component.
