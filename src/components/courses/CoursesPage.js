@@ -4,7 +4,7 @@ import * as courseActions from "../../redux/actions/courseactions";
 import * as authorActions from "../../redux/actions/authoractions";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
-import CourseList from "./CourseList";;
+import CourseList from "./CourseList";
 // Only using a class here for stateful implementation and to learn both syntaces.
 
 /**
