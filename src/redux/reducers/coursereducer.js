@@ -1,4 +1,6 @@
 import * as types from "../actions/actiontypes";
+import initialState from "./initialstate";
+
 /**
  * Updates the redux store by adding the new action passed in action.course to store.
  * Whatever is returned from the reducer becomes the new state for that reducer.
@@ -7,7 +9,7 @@ import * as types from "../actions/actiontypes";
  * @param {object} action The payload of information sent from data from application the store.
  * @returns {object} The updated state.
  */
-export default function courseReducer(state = [], action) {
+export default function courseReducer(state = initialState.courses, action) {
   switch (action.type) {
   case types.CREATE_COURSE:
     return [...state, { ...action.course }];
