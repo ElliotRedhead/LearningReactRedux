@@ -45,7 +45,7 @@ export function loadCourses() {
 
 export function saveCourse(course) {
   return function (dispatch, getState) {
-    return courseApi.saveCourse().then(savedCourse => {
+    return courseApi.saveCourse(course).then(savedCourse => {
       /* If ID exists, update an existing course, else create a new course. */
       course.id
         ? dispatch(updateCourseSuccess(savedCourse))
