@@ -1,14 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import { connect } from "react-redux";
 import { loadCourses } from "../../redux/actions/courseactions";
 import { loadAuthors } from "../../redux/actions/authoractions";
 import PropTypes from "prop-types";
+import CourseForm from "./CourseForm";
+import { newCourse } from "../../tools/mockData";
 
 /**
  * Creates course page component, utilising courses and authors properties.
+ * 
+ * Use rest operator to assign any properties not destructured to props with "...props".
+ * useState returns pair of values, array destructuring is used to assign each value a name.
+ * The first value is the state variable, the second is the setter func for that variable.
+ * useState initialises course state variable to a copy of the course passed by props.
+ * 
  * useEffect replaces componentDidMount, allows handling of side-effects.
  */
-function ManageCoursePage(courses, authors, loadAuthors, loadCourses) {
+function ManageCoursePage({courses, authors, loadAuthors, loadCourses, ...props}) {
+  const [course, setCourse] = useState({...props.course});
+  const [errors, setErrors] = useState({});
   useEffect( () => {
     if (courses.length === 0){
       loadCourses().catch(error => {
@@ -22,16 +32,14 @@ function ManageCoursePage(courses, authors, loadAuthors, loadCourses) {
     }
   }, [authors.length, courses.length, loadAuthors, loadCourses]);
   return (
-    <>
-      <h2>Manage Course</h2>
-    </>
-  );
+    <CourseForm course={course} errors={errors} authors={authors} />);
 }
   
 
 ManageCoursePage.propTypes = {
+  course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
-  course: PropTypes.array.isRequired,
+  courses: PropTypes.array.isRequired,
   loadCourses: PropTypes.func.isRequired,
   loadAuthors: PropTypes.func.isRequired,
 };
@@ -45,6 +53,7 @@ ManageCoursePage.propTypes = {
  */
 function mapStateToProps(state) {
   return {
+    course: newCourse,
     courses:state.courses,
     authors:state.authors
   };
