@@ -1,6 +1,6 @@
 import React, { useEffect , useState } from "react";
 import { connect } from "react-redux";
-import { loadCourses } from "../../redux/actions/courseactions";
+import { loadCourses, saveCourse } from "../../redux/actions/courseactions";
 import { loadAuthors } from "../../redux/actions/authoractions";
 import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
@@ -9,6 +9,7 @@ import { newCourse } from "../../tools/mockData";
 /**
  * Creates course page component, utilising courses and authors properties.
  * 
+ * Calling saveCourse in component will call saveCourse func now bound to dispatch in mapDispatchToProps.
  * Use rest operator to assign any properties not destructured to props with "...props".
  * useState returns pair of values, array destructuring is used to assign each value a name.
  * The first value is the state variable, the second is the setter func for that variable.
@@ -16,7 +17,14 @@ import { newCourse } from "../../tools/mockData";
  * 
  * useEffect replaces componentDidMount, allows handling of side-effects.
  */
-function ManageCoursePage({courses, authors, loadAuthors, loadCourses, ...props}) {
+function ManageCoursePage({
+  courses,
+  authors,
+  loadAuthors,
+  loadCourses,
+  saveCourse,
+  ...props
+}) {
   const [course, setCourse] = useState({...props.course});
   const [errors, setErrors] = useState({});
   useEffect( () => {
@@ -41,8 +49,15 @@ function ManageCoursePage({courses, authors, loadAuthors, loadCourses, ...props}
       [name]: name === "authorId" ? parseInt(value, 10) : value
     }));
   }
-  /* Change handler passed in on props. */
-  return <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} />;
+
+  function handleSave(event){
+    event.preventDefault();
+    saveCourse(course);
+  }
+
+  /* Change handler passed in on props.
+  The variables stated below are all passed to CourseForm*/
+  return <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />;
 }
   
 
@@ -52,6 +67,7 @@ ManageCoursePage.propTypes = {
   courses: PropTypes.array.isRequired,
   loadCourses: PropTypes.func.isRequired,
   loadAuthors: PropTypes.func.isRequired,
+  saveCourse: PropTypes.func.isRequired
 };
 
 /**
@@ -77,6 +93,7 @@ function mapStateToProps(state) {
  */
 const mapDispatchToProps = {
   loadCourses,
-  loadAuthors
+  loadAuthors,
+  saveCourse
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
