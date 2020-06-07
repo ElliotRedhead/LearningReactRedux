@@ -31,8 +31,18 @@ function ManageCoursePage({courses, authors, loadAuthors, loadCourses, ...props}
       });
     }
   }, [authors.length, courses.length, loadAuthors, loadCourses]);
-  return (
-    <CourseForm course={course} errors={errors} authors={authors} />);
+
+  function handleChange(event) {
+    /* Destructure avoids even being garbage collected & shortens refs below. */
+    const { name, value } = event.target;
+    setCourse( prevCourse => ({
+      /* Using javascript's computed property syntax */
+      ...prevCourse,
+      [name]: name === "authorId" ? parseInt(value, 10) : value
+    }));
+  }
+  /* Change handler passed in on props. */
+  return <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} />;
 }
   
 
