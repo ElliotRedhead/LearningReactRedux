@@ -75,15 +75,32 @@ ManageCoursePage.propTypes = {
 };
 
 /**
+ * This is an example of a "selector"" as it selects data from the Redux store.
+ * @param {object} courses List of all courses.
+ * @param {string} slug Identifying string.
+ * @returns {object} The matching course or null if not found.
+ */
+export function getCourseBySlug(courses, slug){
+  return courses.find(course => course.slug === slug) || null;
+}
+
+/**
  * Determines what part of the state we expose to the component.
  * Requests only the data that the component needs.
+ * 
+ * If slug exists then get course identified by slug, else create new course.
  * For each course, return existing course, adding author name property to object.
  * @param {object} state The property of the component.
+ * @param {object} ownProps Used if component requires data from its own props to retrieve data from store.
  * @returns {object} The courses props.
  */
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
+  const course = slug && state.courses.length > 0
+    ? getCourseBySlug(state.courses, slug)
+    : newCourse;
   return {
-    course: newCourse,
+    course,
     courses:state.courses,
     authors:state.authors
   };
