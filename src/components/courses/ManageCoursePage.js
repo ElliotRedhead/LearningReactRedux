@@ -33,13 +33,17 @@ function ManageCoursePage({
       loadCourses().catch(error => {
         alert("Loading courses failed" + error);
       });
+    } else
+    /* Copy the course passed in on props to state when an existing ourse is passed in. */
+    {
+      setCourse({...props.course });
     }
     if(authors.length === 0){
       loadAuthors().catch(error => {
         alert("Loading authors failed" + error);
       });
     }
-  }, [authors.length, courses.length, loadAuthors, loadCourses]);
+  }, [authors.length, courses.length, loadAuthors, loadCourses, props.course]);
 
   function handleChange(event) {
     /* Destructure avoids even being garbage collected & shortens refs below. */
