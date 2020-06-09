@@ -1,5 +1,6 @@
 import * as types from "./actiontypes";
 import * as courseApi from "../../api/courseApi";
+import {beginApiCall} from "./apiStatusActions";
 
 /**
  * Declares action creator.
@@ -35,6 +36,8 @@ export function updateCourseSuccess(course){
  */
 export function loadCourses() {
   return function (dispatch) {
+    dispatch(beginApiCall());
+    dispatch(beginApiCall());
     return courseApi.getCourses().then(courses => {
       dispatch(loadCourseSuccess(courses));
     }).catch(error => {
@@ -45,6 +48,7 @@ export function loadCourses() {
 
 export function saveCourse(course) {
   return function (dispatch, getState) {
+    dispatch(beginApiCall());
     return courseApi.saveCourse(course).then(savedCourse => {
       /* If ID exists, update an existing course, else create a new course. */
       course.id
