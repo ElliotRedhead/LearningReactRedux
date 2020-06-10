@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
 import { newCourse } from "../../tools/mockData";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 /**
  * Creates course page component, utilising courses and authors properties.
@@ -61,6 +62,7 @@ function ManageCoursePage({
     event.preventDefault();
     setSaving(true);
     saveCourse(course).then (() => {
+      toast.success("Course saved");
       history.push("/courses");
     });
   }
