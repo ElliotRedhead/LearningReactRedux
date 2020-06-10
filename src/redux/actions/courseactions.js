@@ -1,6 +1,6 @@
 import * as types from "./actiontypes";
 import * as courseApi from "../../api/courseApi";
-import {beginApiCall} from "./apiStatusActions";
+import {beginApiCall, apiCallError} from "./apiStatusActions";
 
 /**
  * Declares action creator.
@@ -40,6 +40,7 @@ export function loadCourses() {
     return courseApi.getCourses().then(courses => {
       dispatch(loadCourseSuccess(courses));
     }).catch(error => {
+      dispatch(apiCallError(error));
       throw error;
     });
   };
@@ -54,6 +55,7 @@ export function saveCourse(course) {
         ? dispatch(updateCourseSuccess(savedCourse))
         : dispatch(createCourseSuccess(savedCourse));
     }).catch(error => {
+      dispatch(apiCallError(error));
       throw error;
     });
   };
