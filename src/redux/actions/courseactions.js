@@ -29,6 +29,10 @@ export function updateCourseSuccess(course){
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
+export function deleteCourseOptimistic(course){
+  return {type: types.DELETE_COURSE_OPTIMISTIC, course};
+}
+
 /**
  * First thunk, every thunk returns function that takes dispatch as arg.
  * Redux thunk injects dispatch for us, so calling code looks same for async and sync calls.
@@ -58,5 +62,13 @@ export function saveCourse(course) {
       dispatch(apiCallError(error));
       throw error;
     });
+  };
+}
+
+export function deleteCourse(course){
+  return function (dispatch) {
+  /* Doing optimistic delete, so not dispatching begin/end API call actions or apiCallError action as not showing loading status for this.*/
+    dispatch(deleteCourseOptimistic(course));
+    return courseApi.deleteCourse(course.id);
   };
 }
