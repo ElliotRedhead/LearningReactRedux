@@ -5,6 +5,7 @@ import { loadAuthors } from "../../redux/actions/authoractions";
 import PropTypes from "prop-types";
 import CourseForm from "./CourseForm";
 import { newCourse } from "../../tools/mockData";
+import Spinner from "../common/Spinner";
 
 /**
  * Creates course page component, utilising courses and authors properties.
@@ -64,7 +65,8 @@ function ManageCoursePage({
 
   /* Change handler passed in on props.
   The variables stated below are all passed to CourseForm*/
-  return <CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />;
+  return authors.length === 0 || courses.length === 0 ? (<Spinner/>) :
+    (<CourseForm course={course} errors={errors} authors={authors} onChange={handleChange} onSave={handleSave} />);
 }
   
 
