@@ -37,7 +37,6 @@ export function updateCourseSuccess(course){
 export function loadCourses() {
   return function (dispatch) {
     dispatch(beginApiCall());
-    dispatch(beginApiCall());
     return courseApi.getCourses().then(courses => {
       dispatch(loadCourseSuccess(courses));
     }).catch(error => {
