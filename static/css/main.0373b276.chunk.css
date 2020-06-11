@@ -1,0 +1,2 @@
+.loader,.loader:after{border-radius:50%;width:10em;height:10em}.loader{margin:60px auto;font-size:10px;position:relative;text-indent:-9999em;border:1.1em solid rgba(255,151,0,.2);border-left-color:#ff9700;transform:translateZ(0);-webkit-animation:load8 1.1s linear infinite;animation:load8 1.1s linear infinite}@-webkit-keyframes load8{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes load8{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}#app{max-width:850px;margin:0 auto}nav{padding:20px 0}
+/*# sourceMappingURL=main.0373b276.chunk.css.map */
