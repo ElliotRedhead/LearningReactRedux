@@ -26,7 +26,7 @@
         "prestart:api": "node src/tools/createMockDb.js",
         "start:api": "node src/tools/apiServer.js",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "jest",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
