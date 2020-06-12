@@ -24,5 +24,5 @@ it("sets error when attempting to save an empty title field", () => {
   // Simulate can be used to simulate user input.
   wrapper.find("form").simulate("submit");
   const error = wrapper.find(".alert").first();
-  expect(error.text()).toBe("Title is required.");
+  expect(error.text()).toBe("Title is required");
 });
