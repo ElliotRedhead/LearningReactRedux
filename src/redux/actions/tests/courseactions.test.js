@@ -21,7 +21,7 @@ describe("Async Actions", () => {
       });
       const expectedActions = [
         { type: types.BEGIN_API_CALL },
-        { type: types.LOAD_AUTHORS_SUCCESS, courses }
+        { type: types.LOAD_COURSES_SUCCESS, courses }
       ];
       const store = mockStore({courses: []});
       return store.dispatch(courseActions.loadCourses()).then(() => {
