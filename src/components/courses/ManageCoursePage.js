@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
  * 
  * useEffect replaces componentDidMount, allows handling of side-effects.
  */
-function ManageCoursePage({
+export function ManageCoursePage({
   courses,
   authors,
   loadAuthors,
