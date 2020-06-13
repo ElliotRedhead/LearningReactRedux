@@ -23,7 +23,7 @@ yarn start
 ### Github Pages Deployment
 
 [Github Pages Setup](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)  
-_N.B. The functioning project relies on a local API (via JSON Server), the GH page is accessible [here](https://elliotredhead.github.io/ReactReduxIntroduction/) but the course list will not be loaded._
+_N.B. The functioning project relies on a local API (via JSON Server), the course list will not be loaded without a backend addition._
 
 ## Syntax
 
